@@ -1,0 +1,14 @@
+.navbar.navbar-default{
+    margin-top: 10px;
+}
+
+
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+    width: 400px;
+    margin: auto;
+}
+
+.navbar navbar-default{
+    background-color: #2b669a;
+}

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html ng-app="angularTable">
+<head>
+    <title>List Users</title>
+
+    <!-- Bootstrap -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    
+
+</head>
+<body>
+    <nav class="navbar navbar-default" style="background-color:info">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#" color="black">Facebook Profile Viewer</a>
+            </div>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#" color="black">Home</a></li>
+                <li><a href="#" color="black">View My Profile</a></li>
+            </ul>
+        </div>
+
+    </nav>
+    <center><h2>Users List</h2></center>
+    <div role="main" class="container theme-showcase">
+        <div ng-controller="listData">
+        <div class="row">
+            <br>
+            <div class="col-lg-1"></div>
+            <div class="col-lg-7">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label> Search </label>
+                        <input type="text" ng-model="search" class="form-control" placeholder="Search">
+                    </div>
+                </form>
+            </div>
+            <!-- <div class="col-lg-2"></div>
+            <div class="col-lg-2"></div> -->
+            <div class="col-lg-4">
+                  
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-primary btn-lg
+                +" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-plus" color ="white"></span>  Add User</button> 
+
+                   
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h3 class="modal-title" id="myModalLabel">Add New User</h3>
+                          </div>
+                          <div class="modal-body">
+                            <div class="row">
+                                <div class="col-lg-2"></div>
+                                <div class="col-lg-8">
+                                    <label for="name">Name: </label><input class="form-control" ng-model="user.name" type="text" name="name" id="name" required><br>
+                                    <label for="email">Email Address: </label><input class="form-control" ng-model="user.email" type="email" name="email" id="email" required><br>
+                                    <label for="phone">Phone Number:</label><input class="form-control" ng-model="user.phone" type="tel" name="phone" id="phone" required><br>
+                                    <label for="url">Facebook URL: </label><input class="form-control" ng-model="user.url" type="url" name="url" id="url" required><br>
+                                    <label for="fid">Facebook ID: </label><input class="form-control" ng-model="user.fid" type="text" name="fid" id="fid" required><br>
+                                </div>
+                                <div class="col-lg-2"></div>
+                            </div>
+                            
+                          </div>
+                          <div class="modal-footer">
+                            <button class="btn btn-primary" ng-click="addUser()">Submit</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+            </div>
+        </div>
+        <div class = "row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10">
+                <br> 
+                <div class="bs-component table-responsive" ng-controller="listData">
+                    <table class="table table-bordered table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th ng-click="sort('name')">Name
+                                <span class="glyphicon sort-icon" ng-show="sortKey=='name'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                </th>
+                                <th ng-click="sort('email')">Email Address
+                                <span class="glyphicon sort-icon" ng-show="sortKey=='email'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                </th>
+                                <th ng-click="sort('phone')">Phone Number
+                                <span class="glyphicon sort-icon" ng-show="sortKey=='phone'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                </th>
+                                <th> Actions </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr dir-paginate="user in userslist | filter:search | itemsPerPage:10 | orderBy:sortKey:reverse">
+                                <td><a href="{{user.url}}">{{ user.name }} </a></td>
+                                <td>{{user.email}}</td>
+                                <td>{{user.phone}}</td>
+                                <td>
+                                    <button class="btn btn-danger" ng-click="remove(user._id)">Remove</button>
+                                    <button class="btn btn-warning" ng-click="edit(user._id)"><span class="glyphicon glyphicon-pencil"></span> &nbsp;&nbsp;Edit</button>
+                                </td>
+                                  
+                            </tr>
+                        </tbody>
+                    </table>
+                    <dir-pagination-controls
+                       max-size="10"
+                       direction-links="true"
+                       boundary-links="true" >
+                    </dir-pagination-controls>
+                </div>
+            </div>
+            <div class="col-lg-1"></div>  
+        </div>       
+    </div>
+        
+        <script src="/js/angular.min.js"></script>
+        <script src="controllers/controller.js"></script>
+        <script src="/js/jquery.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/dirPagination.js"></script>
+
+        <!-- <script>
+            $(document).ready(function() {
+                $('#example').DataTable();
+            } );
+
+        </script>
+ -->
+</body>
+</html>
