@@ -15,7 +15,7 @@ app.get('/userslist', function (req, res) {
   });
 });
 
-app.post('/userslist', function (req, res) {
+app.post('/addUser', function (req, res) {
   db.userslist.insert(req.body, function(err, doc) {
     res.json(doc);
   });
@@ -27,7 +27,7 @@ app.delete('/deleteUser/:id',function(req,res){
     	res.json(doc);
     });
 });
-
+//get specified user info used in edit button
 app.get('/userslist/:id', function (req, res) {
 	var id = req.params.id;
 	db.userslist.findOne({_id: mongojs.ObjectId(id)}, function (err, doc) {
@@ -35,7 +35,7 @@ app.get('/userslist/:id', function (req, res) {
 	});
 });
 
-app.put('/userslist/:id', function (req, res) {
+app.put('/editUser/:id', function (req, res) {
 	var id = req.params.id;
   	db.userslist.findAndModify({
     query: {_id: mongojs.ObjectId(id)},

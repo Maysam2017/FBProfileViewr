@@ -22,7 +22,7 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/">Home</a></li>
-                <li><a href="/listUsers/100002635595332">View My Profile</a></li>
+                <li><a href="/listUsers/100002635595332">View My Profile</a>
             </ul>
         </div>
     </div>
@@ -58,7 +58,7 @@
                             <div class="row">
                                 <div class="col-lg-2"></div>
                                 <div class="col-lg-8">
-                                    <form name="userForm">
+                                    <form name="userForm" action="">
                                         <label for="name">Name: </label><input class="form-control" ng-model="user.name" type="text" name="name" id="name" required><br>
                                         <label for="email">Email Address: </label><input class="form-control" ng-model="user.email" type="email" name="email" id="email" required"><br>
                                         <span class="error" ng-show="myForm.input.$error.email">Not valid email!</span>
@@ -100,18 +100,19 @@
                             </tr>
                         </thead>
                         <tbody>
-
-                            <tr dir-paginate="user in userslist | filter:search | itemsPerPage:10 | orderBy:sortKey:reverse">
-                                <td><a href="{{user.url}}">{{ user.name }} </a></td>
-                                <td>{{user.email}}</td>
-                                <td class="hidden-xs">{{user.phone}}</td>
-                                <td> 
-                                    <button class="btn btn-default" style="color:green" data-toggle="modal" data-target="#myModal2" ng-click="edit(user._id)"><span class="glyphicon glyphicon-pencil" ></span> &nbsp;&nbsp;Edit</button>
-                                    <button class="btn btn-default" style="color:red" ng-click="remove(user._id)"><span class="glyphicon glyphicon-remove" ></span>&nbsp;&nbsp;Delete</button>
-                                    <!-- <a class="btn btn-primary" href="/listUsers/{{user.fid}}"><span class="glyphicon glyphicon-info-sign"></span>&nbsp;&nbsp;View</a> -->
-                                </td>
-                                  
-                            </tr>
+                            
+	                        <tr dir-paginate="user in userslist | filter:search | itemsPerPage:10 | orderBy:sortKey:reverse">
+	                            <td><a href="/listUsers/{{user.fid}}">{{ user.name }} </a></td>
+	                            <td>{{user.email}}</td>
+	                            <td class="hidden-xs">{{user.phone}}</td>
+	                            <td> 
+	                            <button class="btn btn-default" style="color:green" data-toggle="modal" data-target="#myModal2" ng-click="edit(user._id)"><span class="glyphicon glyphicon-pencil" ></span> &nbsp;&nbsp;Edit</button>
+	                            <button class="btn btn-default" style="color:red" ng-click="remove(user._id)"><span class="glyphicon glyphicon-remove" ></span>&nbsp;&nbsp;Delete</button>
+	                                    
+	                            </td>
+	                                  
+	                        </tr>
+                           
                         </tbody>
                     </table>
                     
@@ -127,7 +128,7 @@
                             <div class="row" >
                                 <div class="col-lg-2"></div>
                                 <div class="col-lg-8">
-                                    <form name="updateForm">
+                                    <form name="updateForm" action="">
                                         <label for="name">Name: </label><input class="form-control" ng-model="user.name" type="text" name="name" id="name" required><br>
                                         <label for="email">Email Address: </label><input class="form-control" ng-model="user.email" type="email" name="email" id="email" required><br>
                                         <label for="phone">Phone Number:</label><input class="form-control" ng-model="user.phone" type="tel" name="phone" id="phone" required><br>
