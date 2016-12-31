@@ -5,6 +5,8 @@
 
     <!-- Bootstrap -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    
 
 </head>
 <body>
@@ -56,16 +58,15 @@
                             <div class="row">
                                 <div class="col-lg-2"></div>
                                 <div class="col-lg-8">
-                                    <form name="addUser" ng-submit="submitForm(addUser.$valid)">
-                                    
+                                    <form name="userForm">
                                         <label for="name">Name: </label><input class="form-control" ng-model="user.name" type="text" name="name" id="name" required><br>
-                                        <label for="email">Email Address: </label><input class="form-control" ng-model="user.email" type="email" name="email" id="email" required><br>
+                                        <label for="email">Email Address: </label><input class="form-control" ng-model="user.email" type="email" name="email" id="email" required"><br>
+                                        <span class="error" ng-show="myForm.input.$error.email">Not valid email!</span>
                                         <label for="phone">Phone Number:</label><input class="form-control" ng-model="user.phone" type="tel" name="phone" id="phone" required><br>
                                         <label for="url">Facebook URL: </label><input class="form-control" ng-model="user.url" type="url" name="url" id="url" required><br>
                                         <label for="fid">Facebook ID: </label><input class="form-control" ng-model="user.fid" type="text" name="fid" id="fid" required><br>
-                                        <button type = "submit" class="btn btn-primary" ng-click="addUser()">Submit</button>
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                        
+                                    <button type = "submit" class="btn btn-primary" ng-click="addUser(userForm.$valid)">Submit</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                                     </form>
                                 </div>
                                 <div class="col-lg-2"></div>
@@ -126,19 +127,23 @@
                             <div class="row" >
                                 <div class="col-lg-2"></div>
                                 <div class="col-lg-8">
-                                    <label for="name">Name: </label><input class="form-control" ng-model="user.name" type="text" name="name" id="name" required><br>
-                                    <label for="email">Email Address: </label><input class="form-control" ng-model="user.email" type="email" name="email" id="email" required><br>
-                                    <label for="phone">Phone Number:</label><input class="form-control" ng-model="user.phone" type="tel" name="phone" id="phone" required><br>
-                                    <label for="url">Facebook URL: </label><input class="form-control" ng-model="user.url" type="url" name="url" id="url" required><br>
-                                    <label for="fid">Facebook ID: </label><input class="form-control" ng-model="user.fid" type="text" name="fid" id="fid" required><br>
+                                    <form name="updateForm">
+                                        <label for="name">Name: </label><input class="form-control" ng-model="user.name" type="text" name="name" id="name" required><br>
+                                        <label for="email">Email Address: </label><input class="form-control" ng-model="user.email" type="email" name="email" id="email" required><br>
+                                        <label for="phone">Phone Number:</label><input class="form-control" ng-model="user.phone" type="tel" name="phone" id="phone" required><br>
+                                        <label for="url">Facebook URL: </label><input class="form-control" ng-model="user.url" type="url" name="url" id="url" required><br>
+                                        <label for="fid">Facebook ID: </label><input class="form-control" ng-model="user.fid" type="text" name="fid" id="fid" required><br>
+
                                 </div>
                                 <div class="col-lg-2"></div>
                             </div>
                             
                           </div>
                           <div class="modal-footer">
+                            <button type = "submit" class="btn btn-primary" ng-click="update(updateForm.$valid)">Update</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                            <button type = "submit" class="btn btn-primary" ng-click="update()">Update</button>
+                            
+                            </form>
                           </div>
                         </div>
                       </div>
@@ -158,7 +163,7 @@
         <script src="/js/angular.min.js"></script>
         <script src="/controllers/controller.js"></script>
         <script src="/js/jquery.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="/js/jquery.min.js"></script>
         <script src="/js/bootstrap.min.js"></script>
         <script src="/js/dirPagination.js"></script>
 
