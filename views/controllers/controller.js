@@ -8,9 +8,11 @@ app.controller('listData',function($scope,$http){
         $scope.user=null;
     });
     }
+
     loadData();
-    $scope.sort = function(keyName){
-        $scope.sortKey = keyName;
+    //used to sort dataTable columns
+    $scope.sort = function(key){
+        $scope.sortKey = key;
         $scope.reverse = !$scope.reverse;
     }
 
@@ -26,9 +28,8 @@ app.controller('listData',function($scope,$http){
            loadData();
         });
     };
-
+    //get specified user information and fill update form
     $scope.edit = function(id) {
-    
         $http.get('/userslist/'+ id).then(function(response) {
             $scope.user = response.data;
         });
