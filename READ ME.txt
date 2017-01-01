@@ -3,8 +3,8 @@ Before running the application, the database must be created and opened
 Mongo database was locally installed.
 Database name: userslist.
 
-use the following commands on cmd window move to where the mongodb is installed:
-  
+**use the following commands on cmd window move to where the mongodb is installed:
+
   cd mongodb 
   cd bin
   mongod
@@ -15,11 +15,12 @@ use the following commands on cmd window move to where the mongodb is installed:
   mongo
   //then create userslist database
   use userslist;
+
+**run the server open cmd window where the project is installed run the command:
+  node server
   
-run the server 
-open cmd window where the project is installed run the command:
-node server
-open browser and request:  localhost:3000
+**open browser and request:  
+  localhost:3000
   
   
   
