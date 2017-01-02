@@ -12,8 +12,7 @@ app.use(bodyParser.json());
 
 //database name 'userslist'
 var mongojs = require('mongojs');
-var db = mongojs('userslist', ['userslist']);
-
+var db = mongojs('mongodb://maysam:maysam2016@ds151108.mlab.com:51108/userslist', []);
 app.get('/userslist', function (req, res) {
   db.userslist.find(function (error, docs) {
     res.json(docs);
