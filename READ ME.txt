@@ -1,6 +1,6 @@
 Maysam Mahmoud(may1993sam20@gmail.com)
 
-
+I am blocked from creating new facebook apps, and the application that I created for this task was deleted by facebook for security reasons.
 The database was modified and created using mlab so its online now 
 
 //////////////////////////////////////////////////////////////////////
